@@ -155,6 +155,8 @@ $outerJoinSql = "
         
         <a href="logout.php" class="logout">Logout</a>
 
+        <p>Joins Samples of my dbs</p>
+
         <!-- Inner Join Results -->
         <div>
             <p>Select  employee.firstname,   employee.lastname,   order_details.product_id, order_details.Quantity,   order_details.Unit_price from order_details  join employee on order_details.employee_id = employee.employee_id  ;</p>

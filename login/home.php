@@ -50,11 +50,11 @@ $rightJoinSql = "
         order_details.Quantity,  
         order_details.Unit_price  
     FROM 
-        products 
+        order_details 
     RIGHT JOIN 
-        order_details ON products.Product_id = order_details.Product_id 
+        employee ON order_details.employee_id = employee.employee_id 
     RIGHT JOIN 
-        employee ON order_details.employee_id = employee.employee_id";
+        products ON order_details.Product_id = products.Product_id";
 
 $outerJoinSql = "
     SELECT 
@@ -219,7 +219,6 @@ $outerJoinSql = "
                     </tbody>
                 </table>
             </div>
-
         </div>
     </div>
 </body>

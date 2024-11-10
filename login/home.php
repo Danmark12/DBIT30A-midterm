@@ -87,7 +87,6 @@ $outerJoinSql = "
         employee 
     LEFT JOIN 
         order_details ON employee.employee_id = order_details.employee_id";
-
 ?>
 
 <html lang="en">
@@ -142,7 +141,27 @@ $outerJoinSql = "
             top: 20px;
             right: 20px;
         }
+        .button {
+            display: inline-block;
+            padding: 10px;
+            background-color: #FF6F20;
+            color: white;
+            margin: 5px 0;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .results {
+            display: none;
+        }
     </style>
+    <script>
+        function toggleResults(id) {
+            document.querySelectorAll('.results').forEach(div => div.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -157,9 +176,14 @@ $outerJoinSql = "
 
         <p>Joins Samples of my dbs</p>
 
+        <!-- Buttons for Each Join Type -->
+        <button class="button" onclick="toggleResults('innerJoin')">Show Inner Join Results</button>
+        <button class="button" onclick="toggleResults('rightJoin')">Show Right Join Results</button>
+        <button class="button" onclick="toggleResults('leftJoin')">Show Left Join Results</button>
+        <button class="button" onclick="toggleResults('outerJoin')">Show Outer Join Results</button>
+
         <!-- Inner Join Results -->
-        <div>
-            <p>Select  employee.firstname,   employee.lastname,   order_details.product_id, order_details.Quantity,   order_details.Unit_price from order_details  join employee on order_details.employee_id = employee.employee_id  ;</p>
+        <div id="innerJoin" class="results">
             <div class="header">Inner Join Results</div>
             <table>
                 <thead>
@@ -188,8 +212,7 @@ $outerJoinSql = "
         </div>
 
         <!-- Right Join Results -->
-        <div>
-            <p>Select * from employee right join  order_details on employee.employee_id = order_details.employee_id;</p>
+        <div id="rightJoin" class="results">
             <div class="header">Right Join Results</div>
             <table>
                 <thead>
@@ -224,8 +247,7 @@ $outerJoinSql = "
         </div>
 
         <!-- Left Join Results -->
-        <div>
-              <p>Select * from employee left join  order_details on employee.employee_id = order_details.employee_id;</p>
+        <div id="leftJoin" class="results">
             <div class="header">Left Join Results</div>
             <table>
                 <thead>
@@ -260,8 +282,7 @@ $outerJoinSql = "
         </div>
 
         <!-- Outer Join Results -->
-        <div>
-            <p>Select * from employee right join  order_details  on employee.employee_id = order_details.employee_id union  select * from employee left join  order_details  on employee.employee_id = order_details.employee_id;</p>
+        <div id="outerJoin" class="results">
             <div class="header">Outer Join Results</div>
             <table>
                 <thead>
